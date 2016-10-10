@@ -1,0 +1,14 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  phoenix:
+    build: .
+    container_name: "phoenixapp"
+    working_dir: "/usr/local/src/phoenix/app/hello_phoenix"
+    command: mix phoenix.server
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+
